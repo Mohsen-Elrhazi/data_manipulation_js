@@ -761,3 +761,5 @@ const employees = [
     languages: ["French", "English", "Italian"],
   },
 ];
+
+module.exports = { employees };
