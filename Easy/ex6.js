@@ -7,16 +7,16 @@ const { employees } = require("../data.js");
 // Expected Result: Returns the average age of all employees.
 
 //! 1ere methode
-function calculateAverageAge(employees){
-    let count=0;
-    let sum =0;
-    employees.forEach(employe=>{
-        count++;
-        sum+=employe.age;
-    });
-    return sum/count;
-}
-console.log(calculateAverageAge(employees));
+// function calculateAverageAge(employees){
+//     let count=0;
+//     let sum =0;
+//     employees.forEach(employe=>{
+//         count++;
+//         sum+=employe.age;
+//     });
+//     return sum/count;
+// }
+// console.log(calculateAverageAge(employees));
 
 //!2eme methode
 function calculateAverageAge(employees){
