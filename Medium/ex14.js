@@ -6,14 +6,14 @@ const { employees } = require("../data.js");
 // Output: [ { id: 5, lastName: "Leroux", ... }, { id: 8, lastName: "Laurent", ... }, ... ]
 // Expected Result: Returns an array of employees whose last name starts with 'L'.
 
-function getEmployeesByLastNameInitial(){
+function getEmployeesByLastNameInitial(employees,carcactere){
     let array=[];
-    
+
     for(let i=0; i<employees.length; i++ ){
-        if(employees[i].lastName[0]=== "L"){
+        if(employees[i].lastName[0]=== carcactere){
             array.push(employees[i]);
         }
     }
     return array;
 }
-console.log( getEmployeesByLastNameInitial(employees));
+console.log( getEmployeesByLastNameInitial(employees, "L"));
