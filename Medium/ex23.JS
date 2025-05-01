@@ -27,7 +27,6 @@ function calculateTotalSalaryByDepartment(employees){
         sum=0;
         for(let j=0; j<employees.length;j++){
             if(uniqueDaparts[i]===employees[j].department){
-                // count++;
                 sum+=employees[j].salary;
             }
         }
