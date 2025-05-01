@@ -6,15 +6,34 @@ const { employees } = require("../data.js");
 // Output: { "Développement": 60000, "Design": 50000, ... }
 // Expected Result: Returns an object with average salaries for each department.
 
-function calculateAverageSalaryByDepartment(employees){
-    let sum=0;
-    obj={};
-    for(let i=0;i<employees.length; i++){
-        let dapartment=employees[i];
-        if()
-        sum+= employees[i].salary;
+function uniqueDepartment(employees) {
+  let array = [];
+  for (let i = 0; i < employees.length; i++) {
+    if (!array.includes(employees[i].department)) {
+      array.push(employees[i].department);
     }
-    return sum/employees.length;
+  }
+  return array;
+}
+// console.log(uniqueDepartment(employees))
+
+function calculateAverageSalaryByDepartment(employees){
+    let uniqueDeparts=uniqueDepartment(employees);
+    let count;
+    let sum;
+    objResult={};
+    for(let i=0;i<uniqueDeparts.length; i++){
+        count=0;
+        sum=0;
+        for(let j=0; j<employees.length; j++){
+            if(uniqueDeparts[i]===employees[j].department){
+                count++;
+                sum+= employees[j].salary;
+            }
+        }
+        objResult[uniqueDeparts[i]]=sum/count;
+    }
+    return objResult;
 }
 
 console.log(calculateAverageSalaryByDepartment(employees));
