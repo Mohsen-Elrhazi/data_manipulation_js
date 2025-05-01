@@ -6,28 +6,50 @@ const { employees } = require("../data.js");
 // Output: "JavaScript"
 // Expected Result: Returns the most common skill among all employees.
 
+function listSkills(employees) {
+  let array = [];
+  for (let i = 0; i < employees.length; i++) {
+    for (let j = 0; j < employees[i].skills.length; j++) {
+      if (!array.includes(employees[i].skills[j])) {
+        array.push(employees[i].skills[j]);
+      }
+    }
+  }
+  return array;
+}
+// console.log( listSkills(employees))
+
 function getMostCommonSkill(employees) {
-  const skillCount = {};
+  let array = listSkills(employees);
+  let count;
+  objSkills = {};
+  for (let i = 0; i < array.length; i++) {
+    count = 0;
+    for (let j = 0; j < employees.length; j++) {
+      for (let k = 0; k < employees[j].skills.length; k++) {
+        if (array[i] === employees[j].skills[k]) {
+          count++;
+        }
+      }
+    }
+    objSkills[array[i]] = count;
+  }
+  // return objSkills;
+let obj={};
+  let firstKey=Object.keys(objSkills)[0];
+  let firstValue=objSkills[firstKey];
 
-  // Count each skill
-  for (const employee of employees) {
-    for (const skill of employee.skills) {
-      skillCount[skill] = (skillCount[skill] || 0) + 1;
+  let maxValue=firstValue;
+  let keyMaxValue=firstKey;
+  for(key in objSkills){
+    if(maxValue<objSkills[key]){
+      maxValue= objSkills[key];
+      keyMaxValue=key
     }
   }
-
-  // Find the most common skill
-  let mostCommonSkill = null;
-  let maxCount = 0;
-
-  for (const skill in skillCount) {
-    if (skillCount[skill] > maxCount) {
-      mostCommonSkill = skill;
-      maxCount = skillCount[skill];
-    }
-  }
-
-  return mostCommonSkill;
+  // return keyMax;
+   obj[keyMaxValue]=maxValue;
+   return obj;
 }
 
-console.log( getMostCommonSkill(employees));
+console.log(getMostCommonSkill(employees));
